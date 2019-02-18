@@ -3,31 +3,43 @@
 @using System.Linq
 @inherits Umbraco.Web.Macros.PartialViewMacroPage
 @{
-    string searchQuery = Request["query"];
+    var query = Request.QueryString["query"];
     if(String.IsNullOrWhiteSpace(searchQuery))
         {
-             searchQuery = ""; 
+             searchQuery = "";
         }
-    var searcher = Examine.Instance;
+    var searcher = Examine.ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"];
     var searchCriteria = searcher.CreateSearchCriteria();
     var query = searchCriteria.GroupedOr( new []{"nodeName", "name", "title", "bodyText"},searchQuery).Compile();
     var SearchResults = searcher.Search(query).Where(x =>x["__IndexType"] == "content").ToList();
 }
+    @if(SearchResults.Any())
+        {
+            <ul>
+                @foreach(var results in SearchResults)
+                { 
+                var node = Umbraco.Typed.Content(Result.Id)
+                var pathIds = Result["__Path"].Split(',');
+                var path = Umbraco.TypedContent(pathIds).Where(p => p != null).Select (p => new{p.Name}).ToList();
+                }
+            </ul>
+
     if (node != null)
         {
-            <div>
-                <div>
-                    <a href="@node.Url" title="@node.Name"></a>
-                </div>
-            </div>
+<div>
+    <div>
+        <a href="@node.Url" title="@node.Name"></a>
+    </div>
+</div>
         }
     else
         {
-            <p>
-                @CurrentPage.noResults
-                @if(!String.IsNullOrWhiteSpace(searchQuery))
-                  {
-                    <text>'No results found for : @searchQuery</text>
-                  }
-            </p>
+<p>
+    @CurrentPage.noResults
+    @if(!String.IsNullOrWhiteSpace(searchQuery))
+    {
+    <text>'No results found for : @searchQuery</text>
+    }
+</p>
         }
+}
