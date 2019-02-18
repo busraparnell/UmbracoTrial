@@ -1,0 +1,34 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/lightbox.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/css/lightbox.css" rel="stylesheet" />
+    <link href="~/css/Custom.css" rel="stylesheet" />
+
+
+    <title>@CurrentPage.pageTitle | @CurrentPage.Name</title>
+</head>
+<body>
+    
+    <div class="container-fluid">
+        <div class="container">
+            @Html.Partial("Navigation")
+        </div>
+    </div>
+   @RenderBody()
+   
+</body>
+</html>

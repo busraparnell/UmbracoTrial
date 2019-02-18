@@ -1,0 +1,22 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<WebApp.Models.ContactModel>
+@using (Html.BeginUmbracoForm<WebApp.Controllers.ContactSurfaceController>("HandleFormPost"))
+{
+
+    <label for="emailFrom">Email</label> 
+    <br />
+    @Html.TextBoxFor(x => x.Email, new { @class = "emailFrom", placeholder = "Email" })
+    <br />
+    <label for="contactName">Name</label>
+    <br />
+    @Html.TextBoxFor(x => x.Name, new { @class = "contactName", placeholder = "Name" })
+    <br />
+    <label for=" dropdownGenders">Select Gender</label>
+    <br />
+    @Html.DropDownListFor(x => x.SelectedGender, Model.ListOfGenders, "-- Select Gender --", new { @class = "dropdownGenders" })
+    <br />
+    <label for="messageFrom">Message</label>
+    <br />
+    @Html.TextAreaFor(x => x.Message, new { @class = "Message", placeholder = "Message" })
+    <br />
+    <input type="submit" value="Submit" />
+}

@@ -1,0 +1,33 @@
+﻿@using Examine.LuceneEngine.SearchCriteria
+@using System
+@using System.Linq
+@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@{
+    string searchQuery = Request["query"];
+    if(String.IsNullOrWhiteSpace(searchQuery))
+        {
+             searchQuery = ""; 
+        }
+    var searcher = Examine.Instance;
+    var searchCriteria = searcher.CreateSearchCriteria();
+    var query = searchCriteria.GroupedOr( new []{"nodeName", "name", "title", "bodyText"},searchQuery).Compile();
+    var SearchResults = searcher.Search(query).Where(x =>x["__IndexType"] == "content").ToList();
+}
+    if (node != null)
+        {
+            <div>
+                <div>
+                    <a href="@node.Url" title="@node.Name"></a>
+                </div>
+            </div>
+        }
+    else
+        {
+            <p>
+                @CurrentPage.noResults
+                @if(!String.IsNullOrWhiteSpace(searchQuery))
+                  {
+                    <text>'No results found for : @searchQuery</text>
+                  }
+            </p>
+        }
