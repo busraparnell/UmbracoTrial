@@ -347,6 +347,7 @@
     <Content Include="App_Data\NuGetBackup\20181219-150154\Config\Lang\zh-CN.user.xml" />
     <Content Include="App_Data\TEMP\ClientDependency\DESKTOP-AA36UCL-d82ea6fadc432d0f87e54a3abc6f48d2-map.xml" />
     <Content Include="App_Data\TEMP\DistCache\LMW3SVC2ROOT-lastsynced.txt" />
+    <Content Include="App_Data\umbraco.licensing.log.txt" />
     <Content Include="App_Data\Umbraco.sdf" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
@@ -659,6 +660,7 @@
     <Content Include="App_Plugins\UmbracoForms\RazorTemplates\HtmlTable.cshtml" />
     <Content Include="App_Plugins\UmbracoForms\UmbracoForms.config" />
     <Content Include="App_Plugins\UmbracoForms\version" />
+    <Content Include="App_Data\UmbracoForms\Data\Web.config" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Media\1009\home-hero.jpg" />
     <Content Include="Media\1010\fleet-overview.jpg" />
@@ -2411,6 +2413,7 @@
     <Folder Include="App_Data\packages\created\" />
     <Folder Include="App_Data\TEMP\FileUploads\" />
     <Folder Include="App_Data\TEMP\Install\" />
+    <Folder Include="App_Data\UmbracoForms\Data\prevaluesources\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <PropertyGroup>

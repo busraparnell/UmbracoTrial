@@ -10,29 +10,30 @@
 
 @{ var selection = Model.Content.Site().Children.Where(x => x.IsVisible()).ToArray(); }
 
-@if (selection.Length > 0)
+
+ @if (selection.Length > 0) 
 {
 <ul>
     @{
-    var HomePage = Model.Content.AncestorsOrSelf(1).FirstOrDefault();
+        var HomePage = Model.Content.AncestorsOrSelf(1).FirstOrDefault();
     }
-   
+
     <li>
         <a href="@HomePage.Url">@HomePage.Name</a>
     </li>
     @foreach (var item in selection)
     {
-      
-            <li class="@(item.IsAncestorOrSelf(Model.Content) ? " current" : null)">
-                 <a href="@item.Url">@item.Name</a>
-             </li>
-        
+
+        <li class="@(item.IsAncestorOrSelf(Model.Content) ? " current" : null)">
+            <a href="@item.Url">@item.Name</a>
+        </li>
+
     }
 </ul>
-    <div class="col-lg-3 input-group">
-        <form action="" method="post" target="_blank">
-            <input type="search" class="form-control" placeholder="Search" name="search" />
-            <span class="input-group-btn"><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button></span>
-        </form>
-    </div>
+<div class="col-lg-3 input-group">
+    <form action="@Umbraco.Content(1149).UrlAbsolute()" method="post" target="_blank">
+        <input type="search" class="form-control" placeholder="Search" name="search" />
+        <span class="input-group-btn"><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button></span>
+    </form>
+</div>
 }

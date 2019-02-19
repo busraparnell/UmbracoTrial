@@ -3,7 +3,8 @@
 @using System.Linq
 @inherits Umbraco.Web.Macros.PartialViewMacroPage
 @{
-    var query = Request.QueryString["query"];
+
+    var searchQuery= Request.QueryString["query"];
     if(String.IsNullOrWhiteSpace(searchQuery))
         {
              searchQuery = "";
@@ -11,35 +12,36 @@
     var searcher = Examine.ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"];
     var searchCriteria = searcher.CreateSearchCriteria();
     var query = searchCriteria.GroupedOr( new []{"nodeName", "name", "title", "bodyText"},searchQuery).Compile();
-    var SearchResults = searcher.Search(query).Where(x =>x["__IndexType"] == "content").ToList();
+    var SearchResults = searcher.Search(query).Where(x => x["__IndexType"] == "content").ToList();
 }
-    @if(SearchResults.Any())
-        {
-            <ul>
-                @foreach(var results in SearchResults)
-                { 
-                var node = Umbraco.Typed.Content(Result.Id)
-                var pathIds = Result["__Path"].Split(',');
-                var path = Umbraco.TypedContent(pathIds).Where(p => p != null).Select (p => new{p.Name}).ToList();
-                }
-            </ul>
-
-    if (node != null)
-        {
-<div>
-    <div>
-        <a href="@node.Url" title="@node.Name"></a>
-    </div>
-</div>
-        }
-    else
-        {
-<p>
-    @CurrentPage.noResults
-    @if(!String.IsNullOrWhiteSpace(searchQuery))
+    @if (SearchResults.Any())
     {
-    <text>'No results found for : @searchQuery</text>
+            <ul class="search-results-box">
+                @foreach (var result in SearchResults)
+                {
+                    var node = Umbraco.TypedContent(result.Id);
+                    var pathIds = result["__Path"].Split(',');
+                    var path = Umbraco.TypedContent(pathIds).Where(p => p != null).Select(p => new { p.Name }).ToList();
+
+                    if (node != null)
+                    {
+                     <div class="product col-sm-6 col-md-3 col-xs-6">
+                          <div class="thumbnail">
+                             <a href="@node.Url" title="@node.Name"></a>
+                          </div>
+                     </div>
+                    }
+                }
+             </ul>
     }
-</p>
-        }
-}
+    else
+    {
+     <p>
+      @CurrentPage.noResults
+      @if(!String.IsNullOrWhiteSpace(searchQuery))
+        {
+         <text> 'No results found for : @searchQuery</text>
+         }
+     </p>
+    }
+ 
