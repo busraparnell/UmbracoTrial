@@ -4,14 +4,14 @@
 @inherits Umbraco.Web.Macros.PartialViewMacroPage
 @{
 
-    var searchQuery= Request.QueryString["query"];
+    string searchQuery= Request["query"];
     if(String.IsNullOrWhiteSpace(searchQuery))
         {
              searchQuery = "";
         }
     var searcher = Examine.ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"];
     var searchCriteria = searcher.CreateSearchCriteria();
-    var query = searchCriteria.GroupedOr( new []{"nodeName", "name", "title", "bodyText"},searchQuery).Compile();
+    var query = searchCriteria.GroupedOr( new []{"nodeName", "Name", "Title", "bodyText"},searchQuery).Compile();
     var SearchResults = searcher.Search(query).Where(x => x["__IndexType"] == "content").ToList();
 }
     @if (SearchResults.Any())
@@ -26,9 +26,7 @@
                     if (node != null)
                     {
                      <div class="product col-sm-6 col-md-3 col-xs-6">
-                          <div class="thumbnail">
-                             <a href="@node.Url" title="@node.Name"></a>
-                          </div>
+                             <a href="@node.Url" title="@node.Name">@node.Name</a>
                      </div>
                     }
                 }
