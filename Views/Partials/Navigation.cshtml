@@ -16,10 +16,22 @@
 <ul>
     @{
         var HomePage = Model.Content.AncestorsOrSelf(1).FirstOrDefault();
+        var languages = Umbraco.TypedContentAtRoot();
     }
 
+    @foreach(var language in languages)
+    {
+        if (Model.Content.HasValue("languagePicker"))
+        {
+            var imgId = language.GetPropertyValue("languagePicker");
+            var img = Umbraco.Media(imgId.ToString());
+            <a href="@language.Url">
+            <img src="@img.Url" height="70px" width="70px" alt="@img.Name" />
+            </a>
+        }
+    }
     <li>
-        <a href="@HomePage.Url">@HomePage.Name</a>
+        <a href="@HomePage.Url">@HomePage.GetPropertyValue("pageTitle")</a>
     </li>
     @foreach (var item in selection)
     {
@@ -32,7 +44,7 @@
 </ul>
 <div class="col-lg-3 input-group">
     <form action="@Umbraco.Content(1149).Url()" method="post" target="_blank">
-        <input type="search" class="form-control" placeholder="Search" name="query" />
+        <input type="search" class="form-control" placeholder='@Umbraco.Field("#Search Placeholder")' name="query" />
         <span class="input-group-btn"><button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button></span>
     </form>
 </div>
