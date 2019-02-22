@@ -9,6 +9,7 @@
       "editor": {
         "view": "~/App_Plugins/UmbracoForms/Backoffice/PropertyEditors/formpicker.html"
       },
+
       "prevalues": {
         "fields": [
           {
@@ -28,6 +29,23 @@
       "isParameterEditor": true,
       "editor": {
         "view": "~/App_Plugins/UmbracoForms/Backoffice/PropertyEditors/themepicker.html"
+      }
+    },
+    {
+      "alias": "UmbracoForms.CharLimiter",
+      "name": "Character Limiter",
+      "editor": {
+        "view": "~/App_Plugins/UmbracoForms/Backoffice/PropertyEditors/charlimiter.html"
+      },
+      "prevalues": {
+        "fields": [
+          {
+            "description": "The number of characters left to use",
+            "key": "limit",
+            "label": "Number of characters",
+            "view": "number"
+          }
+        ]
       }
     }
   ],

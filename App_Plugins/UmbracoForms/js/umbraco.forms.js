@@ -5732,3 +5732,18 @@ angular.module('umbraco.filters').filter('relativeDate', function($filter) {
     };
 
 });
+
+angular.module("umbraco").controller("UmbracoForms.CharLimiterController", function ($scope) {
+    $scope.limitchars = function () {
+        var limit = $scope.model.config.limit;
+        if ($scope.model.value.length > limit) {
+            $scope.model.value = $scope.model.value.substr(0, limit);
+            $scope.info = "You can't write more than " + limit + " characters.";
+
+        }
+
+        else {
+            $scope.info = "You have " + (limit - $scope.model.value.length) + " characters left.";
+        }
+    }
+});
