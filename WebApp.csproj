@@ -1970,6 +1970,7 @@
     <Compile Include="App_Data\Models\Member.generated.cs" />
     <Compile Include="App_Data\Models\News.generated.cs" />
     <Compile Include="App_Data\Models\NewsOverview.generated.cs" />
+    <Compile Include="App_Plugins\Example\Application\PersonSection.cs" />
     <Compile Include="Controllers\ContactSurfaceController.cs" />
     <Compile Include="Controllers\IletisimSurfaceController.cs" />
     <Compile Include="Models\ContactModel.cs" />
