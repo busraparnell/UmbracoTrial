@@ -337,6 +337,7 @@
     <Content Include="App_Data\NuGetBackup\20181219-150154\Config\Lang\zh-CN.user.xml" />
     <Content Include="App_Data\umbraco.licensing.log.txt" />
     <Content Include="App_Data\Umbraco.sdf" />
+    <Content Include="App_Plugins\Example\personResource.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
@@ -534,6 +535,7 @@
     <Content Include="App_Plugins\UmbracoForms\UmbracoForms.config" />
     <Content Include="App_Plugins\UmbracoForms\version" />
     <Content Include="App_Data\UmbracoForms\Data\Web.config" />
+    <Content Include="App_Plugins\Example\package.manifest" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Media\1009\home-hero.jpg" />
     <Content Include="Media\1010\fleet-overview.jpg" />
@@ -1970,9 +1972,11 @@
     <Compile Include="App_Data\Models\Member.generated.cs" />
     <Compile Include="App_Data\Models\News.generated.cs" />
     <Compile Include="App_Data\Models\NewsOverview.generated.cs" />
+    <Compile Include="App_Plugins\Example\Objects\Person.cs" />
     <Compile Include="App_Plugins\Example\Application\PersonSection.cs" />
     <Compile Include="Controllers\ContactSurfaceController.cs" />
     <Compile Include="Controllers\IletisimSurfaceController.cs" />
+    <Compile Include="Controllers\PersonApiController.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\IletisimModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2279,6 +2283,7 @@
     <Folder Include="App_Data\packages\created\" />
     <Folder Include="App_Data\UmbracoForms\Data\prevaluesources\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="Views\PersonApi\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
