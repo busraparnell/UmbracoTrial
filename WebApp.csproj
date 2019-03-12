@@ -337,6 +337,12 @@
     <Content Include="App_Data\NuGetBackup\20181219-150154\Config\Lang\zh-CN.user.xml" />
     <Content Include="App_Data\umbraco.licensing.log.txt" />
     <Content Include="App_Data\Umbraco.sdf" />
+    <Content Include="App_Plugins\Example\backoffice\dashboard\personadddashboard.html" />
+    <Content Include="App_Plugins\Example\backoffice\dashboard\persondashboard.html" />
+    <Content Include="App_Plugins\Example\backoffice\personTree\delete.html" />
+    <Content Include="App_Plugins\Example\backoffice\personTree\deleteController.js" />
+    <Content Include="App_Plugins\Example\backoffice\personTree\edit.html" />
+    <Content Include="App_Plugins\Example\backoffice\personTree\editController.js" />
     <Content Include="App_Plugins\Example\personResource.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />

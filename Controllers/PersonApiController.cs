@@ -5,10 +5,12 @@ using System.Web;
 using System.Web.Mvc;
 using Umbraco.Core.Persistence;
 using Umbraco.Web.Editors;
+using Umbraco.Web.Mvc;
 using WebApp.App_Plugins.Example.Application.Objects;
 
 namespace WebApp.Controllers
 {
+    [PluginController("Example")]
     public class PersonApiController : UmbracoAuthorizedJsonController
     {
       public IEnumerable<Person> GetAll()
